@@ -21,17 +21,32 @@ package org.apache.kerby.kerberos.kerb.integration.test;
 
 import org.apache.kerby.kerberos.kerb.gss.KerbyGssProvider;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.security.Provider;
 
 public class KerbyGssAppTest extends GssAppTest {
+    private int option = 0;  // 0 - all_jdk; 1 - client_jdk ; 2 - server_jdk; 3 - non_jdk
 
     @Before
     @Override
     public void setUp() throws Exception {
+//        Provider provider = new KerbyGssProvider();
+//        java.security.Security.insertProviderAt(provider, 1);
+        super.setUp();
+    }
+
+    @Test
+    public void mytest() throws Exception {
         Provider provider = new KerbyGssProvider();
         java.security.Security.insertProviderAt(provider, 1);
-        super.setUp();
+//        Provider provider = new KerbyGssProvider();
+//        java.security.Security.removeProvider(provider.getName());
+        super.test();
+    }
+
+    private void deployProvider() {
+
     }
 
 }
